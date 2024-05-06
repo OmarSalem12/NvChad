@@ -9,10 +9,10 @@ map("i", "<C-k>", "<Up>", { desc = "move up" })
 
 map("n", "<Esc>", "<cmd>noh<CR>", { desc = "general clear highlights" })
 
-map("n", "<C-h>", "<C-w>h", { desc = "switch window left" })
-map("n", "<C-l>", "<C-w>l", { desc = "switch window right" })
-map("n", "<C-j>", "<C-w>j", { desc = "switch window down" })
-map("n", "<C-k>", "<C-w>k", { desc = "switch window up" })
+-- map("n", "<C-h>", "<C-w>h", { desc = "switch window left" })
+-- map("n", "<C-l>", "<C-w>l", { desc = "switch window right" })
+-- map("n", "<C-j>", "<C-w>j", { desc = "switch window down" })
+-- map("n", "<C-k>", "<C-w>k", { desc = "switch window up" })
 
 map("n", "<C-s>", "<cmd>w<CR>", { desc = "file save" })
 map("n", "<C-c>", "<cmd>%y+<CR>", { desc = "file copy whole" })
@@ -30,6 +30,7 @@ map("n", "<leader>lf", vim.diagnostic.open_float, { desc = "lsp floating diagnos
 map("n", "[d", vim.diagnostic.goto_prev, { desc = "lsp prev diagnostic" })
 map("n", "]d", vim.diagnostic.goto_next, { desc = "lsp next diagnostic" })
 map("n", "<leader>q", vim.diagnostic.setloclist, { desc = "lsp diagnostic loclist" })
+map("n", "<C-f>", '<cmd> lua vim.lsp.buf.signature_help() <CR>', { desc = "lsp signature help" })
 
 -- tabufline
 map("n", "<leader>b", "<cmd>enew<CR>", { desc = "buffer new" })
@@ -59,8 +60,8 @@ map(
 )
 
 -- nvimtree
-map("n", "<C-n>", "<cmd>NvimTreeToggle<CR>", { desc = "nvimtree toggle window" })
-map("n", "<leader>e", "<cmd>NvimTreeFocus<CR>", { desc = "nvimtree focus window" })
+map("n", "<leader>e", "<cmd>NvimTreeToggle<CR>", { desc = "nvimtree toggle window" })
+map("n", "<leader>ee", "<cmd>NvimTreeFocus<CR>", { desc = "nvimtree focus window" })
 
 -- telescope
 map("n", "<leader>fw", "<cmd>Telescope live_grep<CR>", { desc = "telescope live grep" })
@@ -112,6 +113,19 @@ map("n", "<leader>wK", "<cmd>WhichKey <CR>", { desc = "whichkey all keymaps" })
 map("n", "<leader>wk", function()
   vim.cmd("WhichKey " .. vim.fn.input "WhichKey: ")
 end, { desc = "whichkey query lookup" })
+
+-- oil 
+map("n", "<->", "<cmd>Oil<CR>", { desc = "Open parent directory" })
+
+-- Dap 
+map("n", "<leader>db", "<cmd>DapToggleBreakpoint<CR>", { desc = "Toggle breakpoint" })
+map("n", "<leader>dpr", function()
+    require('dap-python').test_method() 
+end, { desc = "Continue" })
+
+-- Autosession 
+map("n", "<leader>ss", "<cmd>SessionSave<CR>", { desc = "Save session" })
+map("n", "<leader>sl", "<cmd>SessionLoad<CR>", { desc = "Load session" })
 
 -- blankline
 map("n", "<leader>cc", function()

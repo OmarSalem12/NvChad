@@ -10,13 +10,15 @@ M.ui = {
   theme = "onedark", -- default theme
   transparency = false,
 
+
+  -- cmp themeing
   cmp = {
     icons = true,
     lspkind_text = true,
     style = "default", -- default/flat_light/flat_dark/atom/atom_colored
   },
 
-  telescope = { style = "borderless" }, -- borderless / bordered
+  telescope = { style = "bordered" }, -- borderless / bordered
 
   ------------------------------- nvchad_ui modules -----------------------------
   statusline = {
@@ -30,14 +32,16 @@ M.ui = {
 
   -- lazyload it when there are 1+ buffers
   tabufline = {
+    show_numbers = false,
     enabled = true,
     lazyload = true,
     order = { "treeOffset", "buffers", "tabs", "btns" },
     modules = nil,
   },
 
+  -- nvdash (dashboard)
   nvdash = {
-    load_on_startup = false,
+    load_on_startup = true,
 
     header = {
       "           ▄ ▄                   ",
@@ -52,23 +56,29 @@ M.ui = {
     },
 
     buttons = {
-      { "  Find File", "Spc f f", "Telescope find_files" },
-      { "󰈚  Recent Files", "Spc f o", "Telescope oldfiles" },
-      { "󰈭  Find Word", "Spc f w", "Telescope live_grep" },
-      { "  Bookmarks", "Spc m a", "Telescope marks" },
-      { "  Themes", "Spc t h", "Telescope themes" },
-      { "  Mappings", "Spc c h", "NvCheatsheet" },
+      { "  Find File", "\\ ff", "Telescope find_files" },
+      { "󰈚  Recent Files", "\\ fo", "Telescope oldfiles" },
+      { "󰈭  Find Word", "\\ fw", "Telescope live_grep" },
+      { "  > Toggle file explorer", "\\ e", "NvimTreeToggle"},
+      { "  Bookmarks", "\\ ma", "Telescope marks" },
+      { "  Themes", "\\ th", "Telescope themes" },
+      { "  Mappings", "\\ ch", "NvCheatsheet" },
+      { "󰁯  Restore Session", "\\ wr", "<cmd>SessionRestore<CR>"},
+      { "  Quit NVIM", "\\ q" , "<cmd>qa<CR>"}
     },
   },
 
-  cheatsheet = {
-    theme = "grid", -- simple/grid
-    excluded_groups = { "terminal (t)", "autopairs", "Nvim" }, -- can add group name or with mode
-  },
+  cheatsheet = { theme = "grid" }, -- simple/grid
 
-  lsp = { signature = true },
+  lsp = {
+    -- show function signatures i.e args as you type
+    signature = {
+      disabled = false,
+      silent = true, -- silences 'no signature help available' message from appearing
+    },
+    },
 
-  term = {
+   term = {
     hl = "Normal:term,WinSeparator:WinSeparator",
     sizes = { sp = 0.3, vsp = 0.2 },
     float = {
